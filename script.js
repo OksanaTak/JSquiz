@@ -51,10 +51,12 @@ var quizArray = [
         option4:"Hypertext Markup Literature",
         answer:"Hypertext Markup Language"
     }
-
-
-
-
-    
-
 ]
+ var startbutton = document.getElementById("startQuiz")
+ startbutton.addEventListener ("click", function(){
+    quizContainer.style.display="block"
+    startbutton.style.display="none"
+ })
+
+ var quizContainer = document.getElementById("quizContainer")
+ quizContainer.style.display="none"
