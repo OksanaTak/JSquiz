@@ -6,6 +6,10 @@ var option3 = document.getElementById('option3')
 var option4 = document.getElementById('option4')
 var checkAnswer = document.getElementById('checkAnswer')
 var timerElement= document.getElementById('timer')
+var summaryElement = document.getElementById('summary')
+
+var saveUserScore= document.getElementById('save-user-score')
+
 var timerCounter= 90 //360
 var timerClock;
 var score = 0
@@ -95,6 +99,7 @@ function displayQuestion () {
 }
 var quizContainer = document.getElementById('quizContainer')
 quizContainer.style.display = 'none'
+summaryElement.style.display = 'none'
 
 function correctAnswer (event) {
   var userSelection = event.target.innerText
@@ -103,6 +108,7 @@ function correctAnswer (event) {
     checkAnswer.innerText="answer is correct"
   } else { 
     checkAnswer.innerText="answer is wrong"
+    timerCounter -=5;
   }
   if(currentQuestion < quizArray.length-1){
     currentQuestion++
@@ -110,9 +116,13 @@ function correctAnswer (event) {
   }else{
     summary()
   }
+
 }
 
 
 function summary(){
     quizContainer.style.display = 'none'
+    summaryElement.style.display = 'block'
+    document.getElementById("final-score").innerText = (socre+timerCounter) 
+    clearInterval(timerClock)
 }
