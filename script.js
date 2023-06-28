@@ -28,6 +28,14 @@ var quizArray = [
     answer: 'all of the above'
   },
   {
+    question: 'What is the correct way to create an object in JavaScript',
+    option1: 'var obj = {}',
+    option2: 'var obj = new Object()',
+    option3: 'Both a and b are correct',
+    option4: 'None of the above',
+    answer: 'Both a and b are correct'
+  },
+  {
     question:
       'Which of the following is NOT a valid way to declare a variable in JavaScript',
     option1: 'var',
@@ -37,6 +45,15 @@ var quizArray = [
     answer: 'int'
   },
   {
+    question:
+      'Which method is used to add elements to the end of an array in JavaScript?',
+    option1: 'array.push()',
+    option2: 'array.unshift()',
+    option3: 'array.append()',
+    option4: 'array.add()',
+    answer: 'array.push()'
+  },
+  {
     question: 'What is the correct way to comment a single-line in JavaScript?',
     option1: '// comment',
     option2: '<!-- comment -->',
@@ -44,7 +61,6 @@ var quizArray = [
     option4: '** comment **',
     answer: '** comment **'
   },
-
   {
     question: 'What is the correct way to declare a function in JavaScript?',
     option1: 'myFunction()',
@@ -53,25 +69,6 @@ var quizArray = [
     option4: 'All of the above',
     answer: 'All of the above'
   },
-
-  {
-    question: 'What is the correct way to create an object in JavaScript',
-    option1: 'var obj = {}',
-    option2: 'var obj = new Object()',
-    option3: 'Both a and b are correct',
-    option4: 'None of the above',
-    answer: 'Both a and b are correct'
-  },
-
-  {
-    question:
-      'Which method is used to add elements to the end of an array in JavaScript?',
-    option1: 'array.push()',
-    option2: 'array.unshift()',
-    option3: 'array.append()',
-    option4: 'array.add()',
-    answer: 'array.push()'
-  }
 ]
 var startbutton = document.getElementById('startQuiz')
 startbutton.addEventListener('click', function () {
@@ -116,13 +113,12 @@ function correctAnswer (event) {
   }else{
     summary()
   }
-
 }
 
 
 function summary(){
     quizContainer.style.display = 'none'
     summaryElement.style.display = 'block'
-    document.getElementById("final-score").innerText = (socre+timerCounter) 
+    document.getElementById("final-score").innerText = (score+timerCounter) 
     clearInterval(timerClock)
 }
