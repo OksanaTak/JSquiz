@@ -5,7 +5,9 @@ var option2 = document.getElementById('option2')
 var option3 = document.getElementById('option3')
 var option4 = document.getElementById('option4')
 var checkAnswer = document.getElementById('checkAnswer')
-
+var timerElement= document.getElementById('timer')
+var timerCounter= 90 //360
+var timerClock;
 var score = 0
 option1.addEventListener('click', correctAnswer)
 option2.addEventListener('click', correctAnswer)
@@ -72,6 +74,17 @@ startbutton.addEventListener('click', function () {
   quizContainer.style.display = 'block'
   displayQuestion()
   startbutton.style.display = 'none'
+    timerClock = setInterval(function(){
+       
+        if(timerCounter > 0){
+            timerElement.innerText=timerCounter
+            timerCounter--
+      
+        }else{
+            timerCounter -= 3;
+            summary()
+        }
+    },1000)
 })
 function displayQuestion () {
   questionElement.innerText = quizArray[currentQuestion].question
