@@ -5,13 +5,13 @@ var option2 = document.getElementById('option2')
 var option3 = document.getElementById('option3')
 var option4 = document.getElementById('option4')
 var checkAnswer = document.getElementById('checkAnswer')
-var timerElement= document.getElementById('timer')
+var timerElement = document.getElementById('timer')
 var summaryElement = document.getElementById('summary')
 
-var saveUserScore= document.getElementById('save-user-score')
+var saveUserScore = document.getElementById('save-user-score')
 
-var timerCounter= 90 //360
-var timerClock;
+var timerCounter = 90 //360
+var timerClock
 var score = 0
 option1.addEventListener('click', correctAnswer)
 option2.addEventListener('click', correctAnswer)
@@ -68,24 +68,22 @@ var quizArray = [
     option3: 'var myFunction = function()',
     option4: 'All of the above',
     answer: 'All of the above'
-  },
+  }
 ]
 var startbutton = document.getElementById('startQuiz')
 startbutton.addEventListener('click', function () {
   quizContainer.style.display = 'block'
   displayQuestion()
   startbutton.style.display = 'none'
-    timerClock = setInterval(function(){
-       
-        if(timerCounter > 0){
-            timerElement.innerText=timerCounter
-            timerCounter--
-      
-        }else{
-            timerCounter -= 3;
-            summary()
-        }
-    },1000)
+  timerClock = setInterval(function () {
+    if (timerCounter > 0) {
+      timerElement.innerText = timerCounter
+      timerCounter--
+    } else {
+      timerCounter -= 3
+      summary()
+    }
+  }, 1000)
 })
 function displayQuestion () {
   questionElement.innerText = quizArray[currentQuestion].question
@@ -102,23 +100,34 @@ function correctAnswer (event) {
   var userSelection = event.target.innerText
   if (userSelection == quizArray[currentQuestion].answer) {
     score += 10
-    checkAnswer.innerText="answer is correct"
-  } else { 
-    checkAnswer.innerText="answer is wrong"
-    timerCounter -=5;
+    checkAnswer.innerText = 'answer is correct'
+  } else {
+    checkAnswer.innerText = 'answer is wrong'
+    timerCounter -= 5
   }
-  if(currentQuestion < quizArray.length-1){
+  if (currentQuestion < quizArray.length - 1) {
     currentQuestion++
     displayQuestion()
-  }else{
+  } else {
     summary()
   }
 }
 
-
-function summary(){
-    quizContainer.style.display = 'none'
-    summaryElement.style.display = 'block'
-    document.getElementById("final-score").innerText = (score+timerCounter) 
-    clearInterval(timerClock)
+function summary () {
+  quizContainer.style.display = 'none'
+  summaryElement.style.display = 'block'
+  document.getElementById('final-score').innerText = score + timerCounter
+  clearInterval(timerClock)
 }
+
+document
+  .getElementById('save-user-score')
+  .addEventListener('click', function (e) {
+    e.preventDefault()
+    var userName = document.getElementById('user-initials').value
+    var previous_score = JSON.parse(localStorage.getItem('codequiz')) || []
+    previous_score.push({ user: userName, score: score + timerCounter })
+    localStorage.setItem('codequiz', JSON.stringify(previous_score))
+    summaryElement.innerHTML =
+      '<a href="./highscores.html">Check High Scores</a>'
+  })
