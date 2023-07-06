@@ -21,5 +21,4 @@ THEN I can save my initials and score
 [Deployment](https://oksanatak.github.io/JSquiz/)
 
 ### screenshot 
-![Screen1](https://github
-.com/OksanaTak/JSquiz/blob/main/Screen%20Shot%202023-07-06%20at%202.56.04%20PM.png) 
+![Screen1](https://github.com/OksanaTak/JSquiz/blob/main/Screen%20Shot%202023-07-06%20at%202.56.04%20PM.png) 
